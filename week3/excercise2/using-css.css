@@ -1,0 +1,11 @@
+.special {
+    font-style: italic;
+    font-weight: bold;
+    color: blue;
+}
+.mordern {
+    background: #eee;
+}
+p {
+    font-size: 24pt;
+}
