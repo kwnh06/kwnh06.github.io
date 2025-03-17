@@ -1,0 +1,22 @@
+span {
+    background: dodgerblue;
+    color: #ffffff;
+}
+span#top {
+    background: dodgerblue;
+}
+p#primary {
+    background: purple;
+}
+p.primary {
+    color: green;
+}
+div#descendant{
+    color: deepskyblue;
+}
+div>a {
+    color: blue;
+}
+p+p{
+    color: aquamarine;
+}

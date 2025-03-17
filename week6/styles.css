@@ -1,0 +1,23 @@
+body span {
+    background: dodgerblue;
+    color: aliceblue;
+}
+span.sky{
+    background: dodgerblue;
+}
+.code {
+    font-family: inherit;
+}
+div>a {
+    color: palevioletred;
+}
+p+p{
+    color: brown;
+}
+.red{color: red;}
+.blue{color: aqua;}
+.bold{font-weight: bold;}
+.italic{font-style: italic;}
+p [ chucnang="vip"] {
+    color: chocolate;
+}
