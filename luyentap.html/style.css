@@ -1,0 +1,55 @@
+#line{
+   color: blue;
+}
+/* chỉ tác động vào con trực tiếp của div */
+div >p {
+   color: red;
+   font-size: 30px;
+}
+/* primary selector */
+span#top {
+   background: dodgerblue;
+}
+div.items a{
+   color: green;
+}
+/* Nested Selectors */
+p+p{
+   font-style: italic;
+   font-weight: bold;
+}
+.apple {color: brown;} 
+/* áp dụng cho những class có chứa apple */
+.apple.orange{ color: blue;}
+/* Attribute Selectors */
+a[title="menu"]{
+   color: #962103;
+}
+/* hover*/
+a:hover {
+   color: #D48F29;
+   text-decoration: underline overline;
+}
+/* visited */
+a:visited {
+   color: #D48F29;
+}
+html:active{
+   background: yellow;
+}
+h1::before { /* "« " */
+   content: "\00AB\0020"
+   }
+   h1::after { /* " »" */
+      content: "\0020\00BB"
+      }
+
+tr:nth-child(2n) {
+background: #95313b;
+color: #fff;
+}
+
+p:nth-of-type(2) {
+   background: #95313b;
+   color: #fff;
+   }
