@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Example</title>
+</head>
+<body>
+    <h1>JavaScript Example</h1>
+    <form action="javascript:void(0);">
+        <input type="number" id="number1" placeholder="Enter first number">
+        <br>
+        <input type="number" id="number2" placeholder="Enter second number">
+        <br>
+        <button id="button1" onclick="addNumber()">Submit</button>
+    </form>
+
+
+    <script>
+    function addNumber() {
+    const num1 = parseInt(document.getElementById('number1').value);
+    const num2 = parseInt(document.getElementById('number2').value);
+
+    // Kiểm tra nếu người dùng không nhập số hợp lệ
+    if (isNaN(num1) || isNaN(num2)) {
+        alert("Please enter valid numbers in both fields.");
+        return;
+    }
+
+    // Tính toán tổng, hiệu, tích
+    const sum = num1 + num2;
+    const difference = num1 - num2;
+    const product = num1 * num2;
+
+    // Hiển thị kết quả bằng alert
+    alert(`The sum is: ${sum}\nThe difference is: ${difference}\nThe product is: ${product}`);
+}
+    </script>
+</body>
+</html>
