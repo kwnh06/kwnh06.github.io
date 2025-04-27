@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bảng linh kiện</title>
+    <style>
+        /* CSS cơ bản cho bảng */
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            margin: 20px auto;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        /* Định dạng menu */
+        nav {
+            background-color: #333;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        nav a:hover {
+            color: #4CAF50;
+        }
+
+        /* Form cơ bản */
+        .form-container {
+            width: 60%;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Menu điều hướng -->
+    <nav id="mainNav">
+        <a href="#">Trang chủ</a>
+        <a href="#">Giới thiệu</a>
+        <a href="#">Tác giả</a>
+        <a href="#">Liên hệ</a>
+    </nav>
+    <button onclick="toggleMenu()">Ẩn/Hiện Menu</button>
+    <!-- Bảng linh kiện -->
+    <h2>Bảng linh kiện máy tính</h2>
+    <table id="Table">
+        <thead>
+            <tr>
+                <th>Tên linh kiện</th>
+                <th>Giá (VND)</th>
+                <th>Đánh giá</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>CPU Intel™ Core i5</td>
+                <td>5000000</td>
+                <td>4.5/5</td>
+            </tr>
+            <tr>
+                <td>RAM DDR4 8GB</td>
+                <td>800000</td>
+                <td>4.0/5</td>
+            </tr>
+            <tr>
+                <td>Ổ cứng SSD 256GB</td>
+                <td>1200000</td>
+                <td>4.8/5</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <button onclick="changeColor()">Đổi màu chữ</button>
+    <button onclick="sortTable()">Sắp xếp theo giá</button>
+    <!-- Biểu mẫu liên hệ -->
+    <div class="form-container">
+        <h3>Biểu mẫu liên hệ</h3>
+        <form onsubmit="return validateForm()">
+            <label>Họ tên:</label>
+            <input type="text" id="name">
+            <label>Email:</label>
+            <input type="email" id="email">
+            <label>Tin nhắn:</label>
+            <textarea id="message"></textarea>
+            <button onclick="submit">Gửi</button>
+
+        </form>
+    </div>
+    <script>
+
+        let isRed = false;   //Biến để theo dõi màu sắc chữ
+
+        function changeColor() {
+            const table = document.getElementById("Table"); // tìm tới bảng có id="Table"
+            table.style.color = isRed ? "black" : "red";   // Đổi màu chữ 
+            isRed = !isRed;   // !:phủ định. Nếu isRed là true thì đổi thành false và ngược lại
+        }
+
+
+        function sortTable() {
+            const table = document.getElementById("Table");   //Tìm tới bảng table có id="Table"
+            const rows = Array.from(table.rows).slice(1);     //table.row: Lấy tất cả các hàng của bảng, slice(1) để bỏ qua hàng đầu tiên (tiêu đề)
+            //Array form: Chuyển đổi thành mảng và loại bỏ hàng tiêu đề
+            rows.sort((a, b) => {
+                const priceA = parseInt(a.cells[1].innerText);
+                const priceB = parseInt(b.cells[1].innerText);
+                return priceA - priceB;
+            });
+            // parseInt: Chuyển đổi chuỗi thành số nguyên
+            //a.cells[1]: ô thứ 2 (giá) trong hàng a
+            //b.cells[1]: ô thứ 2 (giá) trong hàng b
+            //.innerText: Lấy nội dung văn bản của ô thứ 2 trong hàng a và b
+            // return priceA - priceB: so sánh giá, giá nhỏ hơn sẽ đứng trước lớn hơn
+
+            rows.forEach(row => table.appendChild(row));
+            //appendChild: thêm hàng đã sắp xếp vào bảng
+        }
+
+
+        function toggleMenu() {
+            const nav = document.getElementById("mainNav"); //Tìm thẻ nav có id là "mainNav"
+            nav.style.display = nav.style.display === "none" ? "block" : "none"; //Kiểm tra nếu đang không hiện(display=none) thì hiện(display=block), nếu không thì ẩn(display=none)
+        }
+
+        function validateForm() //validateForm: Kiểm tra tính hợp lệ của biểu mẫu
+        {
+            const name = document.getElementById("name").value; // lấy giá trị của ô nhập liệu có id là "name"
+            const email = document.getElementById("email").value; // lấy giá trị của ô nhập liệu có id là "email"
+            const message = document.getElementById("message").value;// lấy giá trị của ô nhập liệu có id là "message"
+
+            if (name === "" || email === "" || message === "") // kiểm tra nếu ô nào đó trống thì thông báo lỗi
+            {
+                alert("Vui lòng điền đầy đủ thông tin!");
+                return false; // không gửi biểu mẫu
+            }
+            alert("Gửi thành công!");
+            return true; // gửi biểu mẫu thành công
+        }
+    </script>
+</body>
+
+</html>
