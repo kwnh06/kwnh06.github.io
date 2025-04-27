@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register New Account</title>
+    <title>Document</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -18,15 +18,10 @@
         }
 
         form {
-            width: 50%;
+            width: 80%;
             margin: 20px auto;
             border: 1px solid #ccc;
             padding: 20px;
-        }
-
-        label {
-            display: block;
-            margin: 10px 0 5px;
         }
 
         input,
@@ -37,20 +32,6 @@
             margin-bottom: 10px;
             border: 1px solid #ccc;
         }
-
-        .inline {
-            display: inline-block;
-            width: auto;
-        }
-
-        .buttons {
-            text-align: center;
-        }
-
-        .buttons button {
-            margin: 5px;
-            padding: 10px 20px;
-        }
     </style>
 </head>
 
@@ -58,93 +39,89 @@
     <h1>REGISTER NEW ACCOUNT</h1>
     <form name="frmRegister" method="get" onsubmit="return formValid();">
         <label>Username</label>
-        <input type="text" name="txtUsername" required>
+        <input type="text" name="username">
 
         <label>Password</label>
-        <input type="password" name="txtPassword1" required>
+        <input type="text" name="password">
 
-        <label>Confirm password</label>
-        <input type="password" name="txtPassword2" required>
+        <label>Confirm Password</label>
+        <input type="text" name="confirm_password">
 
         <label>Gender</label>
-        <input type="radio" name="gender" value="Male" class="inline" required> Male
-        <input type="radio" name="gender" value="Female" class="inline" required> Female
+        <input type="radio" name="gender" value="Male">
+        <input type="radio" name="gender" value="Female">
 
         <label>Phone</label>
-        <input type="text" name="txtPhone">
+        <input type="number" name="phone">
 
         <label>Email</label>
-        <input type="email" name="txtEmail" required>
+        <input type="email" name="email">
 
         <label>Favourite</label>
-        <input type="checkbox" name="chkMusic" value="Music" class="inline"> Music
-        <input type="checkbox" name="chkReading" value="Reading" class="inline"> Reading
+        <input type="checkbox" name="chkMusic" value="on">Music
+        <input type="checkbox" name="chkReading" value="on">Reading
 
-        <label>Picture</label>
-        <input type="file" name="filPicture">
+        <label for="">Picture</label>
+        <input type="file" name="fileupload" accept="image/*">
 
         <label>Description</label>
-        <textarea name="txtDescription" rows="4"></textarea>
+        <input type="textarea" rows="4" name="description"></textarea>
 
         <label>Education level</label>
-        <select name="education">
-            <option value="Aptech">Aptech</option>
+        <select name="education_level">
+            <option value="Aptech" selected>Aptech</option>
             <option value="University">University</option>
-            <option value="College">College</option>
-        </select>
 
-        <label>Language</label>
-        <select name="language" multiple>
-            <option value="Vietnamese">Vietnamese</option>
-            <option value="English">English</option>
-            <option value="French">French</option>
-            <option value="Japanese">Japanese</option>
-        </select>
-
-        <div class="buttons">
-            <button type="submit">Register</button>
-            <button type="reset">Reset</button>
-        </div>
+            <label>Language</label>
+            <select name="language">
+                <option value="Vietnamese">Vietnamese</option>
+                <option value="English">English</option>
+                <option value="French">French</option>
+                <option value="Japanese">Japanese</option>
+            </select>
+            <div class="buttons">
+                <button type="submit">Register</button>
+                <button type="reset">Reset</button>
+            </div>
     </form>
-
     <script>
         function formValid() {
-            const f = document.frmRegister; //
+            const f = document.frmRegister;
 
             // Biểu thức kiểm tra số điện thoại và email
             const phonePattern = /^(\(\d{1,3}\)\d{7})|(\d{9,10})$/;
             const emailPattern = /^[a-zA-Z]\w*(\.\w+)*@\w+(\.\w{2,3})+$/;
 
             // Kiểm tra Username
-            if (f.txtUsername.value === "") {
+            if (f.Username.value === "") {
                 alert("Username can't be empty");
                 f.txtUsername.focus();
                 return false;
             }
 
             // Kiểm tra Password
-            if (f.txtPassword1.value.length < 6) {
+            if (f.Password1.value.length < 6) {
                 alert("Password length must be from 6 to 20 characters");
                 f.txtPassword1.focus();
                 return false;
             }
 
             // Kiểm tra Confirm Password
-            if (f.txtPassword1.value !== f.txtPassword2.value) {
+            if (f.Password1.value !== f.txtPassword2.value) {
                 alert("Password doesn't match");
                 f.txtPassword2.focus();
                 return false;
             }
 
             // Kiểm tra Phone
-            if (!phonePattern.test(f.txtPhone.value)) {
+            if (!phonePattern.test(f.Phone.value)) {
                 alert("Invalid phone number");
-                f.txtPhone.focus();
+                f.Phone.focus();
                 return false;
             }
 
             // Kiểm tra Email
-            if (!emailPattern.test(f.txtEmail.value)) {
+            if (!emailPattern.test(f.Email.value)) {
                 alert("Invalid email address");
                 f.txtEmail.focus();
                 return false;
@@ -165,9 +142,9 @@
             }
 
             // Kiểm tra Description
-            if (f.txtDescription.value === "") {
+            if (f.Description.value === "") {
                 alert("You must enter description");
-                f.txtDescription.focus();
+                f.Description.focus();
                 return false;
             }
 

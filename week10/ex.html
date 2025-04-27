@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu nhà hàng</title>
+    <style>
+        /* Grid view */
+        .grid-view {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .grid-view .menu-item {
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Menu nhà hàng</h1>
+    <button class="toggle-btn" onclick="toggleView()">Chuyển đổi chế độ hiển thị</button>
+    <div class="category">
+        <h2>Khai vị</h2>
+        <ul class="menu-items">
+
+            <li class="menu-item">Gỏi cuốn</li>
+            <li class="menu-item">Chả giò</li>
+            <li class="menu-item">Bánh xèo</li>
+        </ul>
+    </div>
+    <script>
+        function toggleView() {
+            const menuItems = document.querySelectorAll('.menu-item');
+            menuItems.forEach(items => {
+                items.parentElement.classList.toggle('grid-view');
+            });
+        }
+    </script>
+</body>
+
+</html>
