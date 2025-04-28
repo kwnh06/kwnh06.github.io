@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bảng linh kiện máy tính</title>
+    <style>
+        nav {
+            background-color: dimgrey;
+            padding: 15px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        nav a:hover {
+            color: #4CAF50;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- Thanh menu -->
+    <nav>
+        <a href="#">Trang chủ</a>
+        <a href="#">Sách&copy;</a>
+        <a href="#">Tác giả&trade; </a>
+        <a href="#">Liên hệ</a>
+    </nav>
+    <!-- Nút ẩn/hiện -->
+    <button onclick="toggleMenu()">Ẩn/Hiện Menu</button>
+    <!-- Bảng linh kiện -->
+    <h1>Bảng linh kiện máy tính&copy;</h1>
+
+    <table id="table">
+        <thead>
+            <tr>
+                <th>Tên linh kiện</th>
+                <th>Giá (VND)</th>
+                <th>Đánh giá&#9733; </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>CPU Intel&trade; Core i5</td>
+                <td>5000000</td>
+                <td>4.5/5</td>
+            </tr>
+            <tr>
+                <td>RAM DDR4 8GB</td>
+                <td>800000</td>
+                <td>4.0/5</td>
+            </tr>
+            <tr>
+                <td>Ổ cứng SSD 256GB</td>
+                <td>1200000</td>
+                <td>4.8/5</td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- Nút -->
+    <button onclick="changeColor()">Đổi màu chữ</button>
+    <button onclick="sortTable()">Sắp xếp theo giá</button>
+    <!-- Biểu mẫu liên hệ -->
+    <div class="form-container">
+        <h2>Biểu mẫu liên hệ</h2>
+        <form onsubmit="return validateForm()">
+            <lable>Họ tên:</lable>
+            <input type="text" id="name" required>
+            <lable>Email:</lable>
+            <input type="email" id="email" required>
+            <lable>Tin nhắn</lable>
+            <textarea name="message" id="message"></textarea>
+            <button onclick="submit()">Gửi</button>
+        </form>
+
+    </div>
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('mainNav');
+            if (menu.style.display === 'none') {
+                menu.style.display = 'block';
+            } else {
+                menu.style.display = 'none';
+            }
+        }
+        function changeColor() {
+            const table = document.getElementById('table');
+            table.style.color = 'blue';
+        }
+        function sortTable() {
+            const table = document.getElementById('table');
+        }
+    </script>
+
+</body>
+
+</html>
